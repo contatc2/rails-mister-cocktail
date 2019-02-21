@@ -1,5 +1,10 @@
-<%= simple_form_for(@cocktail) do |f| %>
-<%= f.input :name %>
-<%= f.submit class: "btn btn-primary"%>
+<h1>Cocktails menu</h1>
+
+<% @cocktails.each do |cocktail| %>
+  <div class="card">
+    <%= link_to cocktail.name, cocktail_path(cocktail)  %>
+
+
+  </div>
 <% end %>
 

@@ -1,0 +1,17 @@
+<div class="card">
+  <h1><%=@cocktail.name  %></h1>
+
+<ul>
+  <% @doses.each do |dose| %>
+   <li><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
+    <%= link_to dose_path(dose), method: :delete, data: {confirm: 'Are you sure?'}  do %>
+     <i class="fas fa-trash-alt"></i>
+    <% end %>
+   </li>
+
+  <% end %>
+</ul>
+
+<%= link_to 'add ingredient', new_cocktail_dose_path(@cocktail)  %>
+
+</div>
