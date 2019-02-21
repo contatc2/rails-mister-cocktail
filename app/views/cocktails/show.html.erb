@@ -1,17 +1,34 @@
-<div class="card">
-  <h1><%=@cocktail.name  %></h1>
+<div class="card m-5" style="height: 500px;">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1265910/pexels-photo-1265910.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)">
+  <%=@cocktail.name  %>
+</div>
 
-<ul>
-  <% @doses.each do |dose| %>
-   <li><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
-    <%= link_to dose_path(dose), method: :delete, data: {confirm: 'Are you sure?'}  do %>
-     <i class="fas fa-trash-alt"></i>
-    <% end %>
-   </li>
+  <div class="d-flex justify-content-around py-3">
+    <div>
+      <h2>Composition</h2>
+      <ul>
+        <% @doses.each do |dose| %>
+         <li><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
+          <%= link_to dose_path(dose), method: :delete, data: {confirm: 'Are you sure?'}  do %>
+           <i class="fas fa-trash-alt"></i>
+          <% end %>
+         </li>
 
-  <% end %>
-</ul>
+        <% end %>
+      </ul>
+    </div>
 
-<%= link_to 'add ingredient', new_cocktail_dose_path(@cocktail)  %>
+    <div>
+      <h2>Add ingredient</h2>
+
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient %>
+      <%= f.input :description %>
+      <%= f.submit 'add ingredient', class: "btn btn-primary"%>
+      <% end %>
+    </div>
+
+  </div>
+
 
 </div>
