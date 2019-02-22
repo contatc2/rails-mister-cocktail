@@ -3,8 +3,8 @@
 
 <div class="cards">
 
-<% @cocktails.each do |cocktail| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1265910/pexels-photo-1265910.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)">
+<% @cocktails.reverse.each do |cocktail| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.image %>)">
     <%= link_to cocktail.name, cocktail_path(cocktail), class:"text-white"  %>
   </div>
 <% end %>
