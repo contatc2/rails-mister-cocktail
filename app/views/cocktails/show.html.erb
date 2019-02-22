@@ -1,5 +1,5 @@
-<div class="card m-5">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @cocktail.image %>)">
+<div class="card m-3">
+  <div class="card-category cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.image, height: 300, width: 400, crop: :fill %>')">
   <%=@cocktail.name  %>
 </div>
 <div class="p-3 border-bottom">

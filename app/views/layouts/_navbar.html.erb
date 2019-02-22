@@ -4,11 +4,13 @@
   <!-- displayed on laptops -->
   <div class="navbar-lewagon-actions d-none d-sm-flex">
       <%= link_to 'new cocktail', new_cocktail_path, class:"navbar-lewagon-link" %>
-    <div class="dropdown">
+    <div class="dropdown dropleft">
       <img src='http://pngimg.com/uploads/cocktail/cocktail_PNG152.png' class="avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#"><i class="fas fa-user"></i> New Cocktail</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> All cocktails</a>
+          <%= link_to new_cocktail_path, {class: "dropdown-item"} do  %>
+          <span><i class="fas fa-plus-circle"></i>New Cocktail</span>
+          <% end %>
+          <a class="dropdown-item" href="#"><i class="fas fa-glass-martini"></i> All cocktails</a>
         </div>
      </div>
   </div>
@@ -18,9 +20,8 @@
     <div class="dropdown">
       <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <a href="#" class="dropdown-item"><i class="fas fa-home"></i> Browse flats</a>
-        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> New Cocktail</a>
-        <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> All cocktails</a>
+        <a class="dropdown-item" href="#"><i class="fas fa-plus-circle"></i> New Cocktail</a>
+        <a class="dropdown-item" href="#"><i class="fas fa-glass-martini"></i> All cocktails</a>
          </div>
     </div>
   </div>

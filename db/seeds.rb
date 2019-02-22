@@ -2,16 +2,16 @@ require 'open-uri'
 require 'nokogiri'
 require 'json'
 
-# puts 'start seeding'
+puts 'start seeding ingredients'
 
-# url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-# ingredients_list = JSON.parse(open(url).read)
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients_list = JSON.parse(open(url).read)
 
-# ingredients_list['drinks'].each do |item|
-#   Ingredient.create!(name: item['strIngredient1'])
-# end
+ingredients_list['drinks'].each do |item|
+  Ingredient.create!(name: item['strIngredient1'])
+end
 
-# puts 'finished seeding'
+puts 'finished seeding'
 
 puts 'start seeding cocktails'
 
@@ -40,29 +40,31 @@ array_names.delete('30. Sidecar')
 array_names.delete('5. Manhattan')
 # p array_names[2..49]
 # p array_names[2..49].count
+sidecar = Cocktail.new(
+  name: '30. Sidecar',
+  description: 'Brandy, tragically underrepresented on this list, earns a well-deserved moment in the worldwide spotlight as the star of one of the world’s most-ordered cocktails. The Sidecar is a good place to start for those not familiar with the category-spanning spirit: the drink mixes brandy, lemon, and triple sec, making a tart, refreshing tipple.'
+)
+sidecar.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/sidecar-inside.jpg'
+sidecar.save
 
 array_names[2..49].each_with_index do |name, i|
   image = if array_p[i][:img] == ''
-            'https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+            'https://images.pexels.com/photos/33400/champagner-toasting-new-year-s-eve-drink.jpg?auto=compress&cs=tinysrgb&dpr=1&w=50'
           else array_p[i][:img]
           end
-  Cocktail.create(
+  cocktail = Cocktail.new(
     name: name,
-    description: array_p[i][:p],
-    image: image
+    description: array_p[i][:p]
   )
+  cocktail.remote_image_url = image
+  cocktail.save
 end
 
-Cocktail.create(
-  name: '30. Sidecar',
-  description: 'Brandy, tragically underrepresented on this list, earns a well-deserved moment in the worldwide spotlight as the star of one of the world’s most-ordered cocktails. The Sidecar is a good place to start for those not familiar with the category-spanning spirit: the drink mixes brandy, lemon, and triple sec, making a tart, refreshing tipple.',
-  image: 'https://static.vinepair.com/wp-content/uploads/2017/11/sidecar-inside.jpg'
-)
-
-Cocktail.create(
+manhattan = Cocktail.new(
   name: '5. Manhattan',
-  description: 'It’s hard to stray from the Manhattan, and the recent rise of rye whiskey makes it even more difficult. Spicy rye, sweet vermouth, and two dashes of Angostura, stirred, strained, and garnished with a brandied cherry can make you feel like a true class act.',
-  image: 'https://static.vinepair.com/wp-content/uploads/2017/11/manhattan-inside.jpg'
+  description: 'It’s hard to stray from the Manhattan, and the recent rise of rye whiskey makes it even more difficult. Spicy rye, sweet vermouth, and two dashes of Angostura, stirred, strained, and garnished with a brandied cherry can make you feel like a true class act.'
 )
+manhattan.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/manhattan-inside.jpg'
+manhattan.save
 
 puts 'finished seeding cocktails'
