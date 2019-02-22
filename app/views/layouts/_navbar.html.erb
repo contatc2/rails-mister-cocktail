@@ -10,13 +10,15 @@
           <%= link_to new_cocktail_path, {class: "dropdown-item"} do  %>
           <span><i class="fas fa-plus-circle"></i>New Cocktail</span>
           <% end %>
-          <a class="dropdown-item" href="#"><i class="fas fa-glass-martini"></i> All cocktails</a>
+          <%= link_to cocktails_path, {class: "dropdown-item"} do  %>
+          <span><i class="fas fa-glass-martini"></i> All cocktails</span>
+          <% end %>
         </div>
      </div>
   </div>
 
   <!-- displayed on phone / tablet -->
-  <div class="navbar-lewagon-actions d-block d-sm-none">
+<!--   <div class="navbar-lewagon-actions d-block d-sm-none">
     <div class="dropdown">
       <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -24,6 +26,6 @@
         <a class="dropdown-item" href="#"><i class="fas fa-glass-martini"></i> All cocktails</a>
          </div>
     </div>
-  </div>
+  </div> -->
 </div>
 

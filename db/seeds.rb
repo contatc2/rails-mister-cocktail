@@ -4,6 +4,8 @@ require 'json'
 
 puts 'start seeding ingredients'
 
+Ingredient.all.destroy_all
+
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredients_list = JSON.parse(open(url).read)
 
@@ -14,6 +16,8 @@ end
 puts 'finished seeding'
 
 puts 'start seeding cocktails'
+
+Cocktail.all.destroy_all
 
 url = 'https://vinepair.com/articles/50-most-popular-cocktails-world-2017/'
 html_file = open(url).read
