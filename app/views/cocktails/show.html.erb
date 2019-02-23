@@ -7,9 +7,10 @@
 
   <p><%= @cocktail.description %></p>
 
+  <%= link_to 'back to cocktails', cocktails_path, class:"btn btn-light" %>
 </div>
 
-  <div class="d-flex justify-content-around p-3">
+  <div class="d-flex justify-content-around flex-wrap p-3">
     <div>
       <h2>Composition</h2>
       <ul>
@@ -29,10 +30,11 @@
       <%= simple_form_for [@cocktail, @dose] do |f| %>
       <%= f.association :ingredient %>
       <%= f.input :description %>
-      <%= f.submit 'add ingredient', class: "btn btn-primary"%>
+      <%= f.submit 'add ingredient', class: "btn btn-light"%>
       <% end %>
     </div>
   </div>
 
 
 </div>
+

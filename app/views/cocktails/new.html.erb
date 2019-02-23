@@ -4,10 +4,15 @@
 
 </div>
 
-<%= simple_form_for(@cocktail) do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :image %>
-<%= f.input :image_cache, as: :hidden %>
-<%= f.submit class: "btn btn-primary"%>
-<% end %>
+<div class="card bg-white p-5">
+
+  <%= simple_form_for(@cocktail) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
+  <%= f.submit class: "btn btn-light"%>
+  <% end %>
+
+
+</div>
