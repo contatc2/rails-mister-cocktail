@@ -16,7 +16,8 @@
           <% end %>
         </div>
      </div>
-    <%= link_to 'New cocktail', new_cocktail_path, class:"btn btn-light" %>
+    <%= link_to 'All cocktails', cocktails_path, class:"btn btn-light mx-3" %>
+    <%= link_to 'New cocktail', new_cocktail_path, class:"btn btn-light mx-3" %>
   </div>
 
   <!-- displayed on phone / tablet -->
@@ -37,6 +38,5 @@
     <input class="form-control" type="text" name="query" value='<%= @query %>' placeholder="Cocktail name">
     <input type="submit" value="search" class="btn btn-light">
   </form>
-  <%= link_to 'All cocktails', cocktails_path, class:"btn btn-light" %>
 </div>
 
