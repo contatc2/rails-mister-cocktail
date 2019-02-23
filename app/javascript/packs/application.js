@@ -10,3 +10,7 @@
 console.log('Hello World from Webpacker')
 
 import 'bootstrap';
+import $ from 'jquery';
+import 'select2';
+
+$('#ingredient').select2({ data: @ingredients });

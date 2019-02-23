@@ -16,6 +16,7 @@ class CocktailsController < ApplicationController
   def show
     @doses = @cocktail.doses
     @dose = Dose.new
+    @ingredients = Ingredient.all.sort
   end
 
   def new

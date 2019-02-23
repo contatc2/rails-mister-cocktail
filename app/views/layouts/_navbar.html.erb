@@ -1,28 +1,27 @@
-<div class="navbar-lewagon">
+<div class="navbar-lewagon fixed-top">
 
   <!-- displayed on laptops -->
   <div class="navbar-lewagon-actions d-none d-sm-flex">
-    <div class="dropdown dropleft">
-      <img src='http://pngimg.com/uploads/cocktail/cocktail_PNG152.png' class="avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%= link_to new_cocktail_path, {class: "dropdown-item"} do  %>
-          <span><i class="fas fa-plus-circle"></i> Add Cocktail</span>
-          <% end %>
-          <%= link_to cocktails_path, {class: "dropdown-item"} do  %>
-          <span><i class="fas fa-glass-martini"></i> All cocktails</span>
-          <% end %>
-          <%= link_to saved_path, {class: "dropdown-item"} do  %>
-          <span><i class="fas fa-heart"></i> My cocktails</span>
-          <% end %>
-        </div>
-     </div>
-    <%= link_to 'All cocktails', cocktails_path, class:"btn btn-light mx-3" %>
-    <%= link_to 'New cocktail', new_cocktail_path, class:"btn btn-light mx-3" %>
+      <div class="dropdown dropleft">
+        <img src='http://pngimg.com/uploads/cocktail/cocktail_PNG152.png' class="avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to new_cocktail_path, {class: "dropdown-item"} do  %>
+            <span><i class="fas fa-plus-circle"></i> Add Cocktail</span>
+            <% end %>
+            <%= link_to cocktails_path, {class: "dropdown-item"} do  %>
+            <span><i class="fas fa-glass-martini"></i> All cocktails</span>
+            <% end %>
+            <%= link_to saved_path, {class: "dropdown-item"} do  %>
+            <span><i class="fas fa-heart"></i> My cocktails</span>
+            <% end %>
+          </div>
+       </div>
+      <%= link_to 'All cocktails', cocktails_path, class:"btn btn-light mx-3" %>
   </div>
 
   <!-- displayed on phone / tablet -->
   <div class="navbar-lewagon-actions d-block d-sm-none">
-    <div class="dropdown">
+    <div class="dropdown mr-2">
       <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
           <%= link_to new_cocktail_path, {class: "dropdown-item"} do  %>
@@ -34,9 +33,14 @@
         </div>
     </div>
   </div>
-  <form action="/cocktails" class="form-inline">
-    <input class="form-control" type="text" name="query" value='<%= @query %>' placeholder="Cocktail name">
-    <input type="submit" value="search" class="btn btn-light">
-  </form>
+
+  <div class="d-flex justify-content-end flex-wrap">
+    <form action="/cocktails" class="form-inline">
+      <input class="form-control" style="width: 70%" type="search" name="query" value='<%= @query %>' placeholder="Cocktail name">
+      <input type="submit" value="search" class="btn btn-light">
+    </form>
+    <%= link_to 'New cocktail', new_cocktail_path, class:"btn btn-light" %>
+  </div>
+
 </div>
 
