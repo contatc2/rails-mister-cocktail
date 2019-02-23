@@ -11,6 +11,7 @@
     <% end %>
   <% end %>
 </div>
+
 <div class="p-3 border-bottom">
   <h2>Description</h2>
 
@@ -29,21 +30,19 @@
            <i class="fas fa-trash-alt"></i>
           <% end %>
          </p>
-
         <% end %>
-
     </div>
+
     <div class="p-1 text-center">
       <h2>Add ingredient</h2>
 
       <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.association :ingredient %>
+       <%= f.association :ingredient, selected: 1, input_html: { class: "select2" } %>
       <%= f.input :description %>
       <%= f.submit 'add ingredient', class: "btn btn-light"%>
       <% end %>
     </div>
   </div>
-
 
 </div>
 
