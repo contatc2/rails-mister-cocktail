@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_154855) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.string "image"
-    t.boolean "saved"
+    t.boolean "saved", default: false
   end
 
   create_table "doses", force: :cascade do |t|
