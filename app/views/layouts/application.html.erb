@@ -10,6 +10,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <!-- from app/assets/javascripts/application.js -->
   </head>
 
   <body style="background-color: #fcf5ee">
@@ -18,7 +19,6 @@
       <%= yield %>
     </div>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
   </body>
 </html>
