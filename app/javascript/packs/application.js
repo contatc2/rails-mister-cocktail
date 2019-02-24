@@ -9,7 +9,8 @@
 
 console.log('Hello World from Webpacker')
 
-import 'bootstrap';
-import $ from 'jquery';
-import 'select2';
+import 'bootstrap'; // do we need this?
+import { initSelect2 } from '../components/form';
+
+initSelect2();
 
