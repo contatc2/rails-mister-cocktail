@@ -20,28 +20,34 @@
   <%= link_to 'back to cocktails', cocktails_path, class:"btn btn-light" %>
 </div>
 
-  <div class="d-flex justify-content-around flex-wrap p-3">
-    <div>
-      <h2>Composition</h2>
+  <div class="row">
 
-        <% @doses.each do |dose| %>
-         <p><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
-          <%= link_to dose_path(dose), method: :delete, data: {confirm: 'Are you sure?'}, class:"text-secondary"  do %>
-           <i class="fas fa-trash-alt"></i>
+    <div class="col-12 col-md-6">
+      <div class="py-3 px-5">
+        <h2>Composition</h2>
+
+          <% @doses.each do |dose| %>
+           <p><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
+            <%= link_to dose_path(dose), method: :delete, data: {confirm: 'Are you sure?'}, class:"text-secondary"  do %>
+             <i class="fas fa-trash-alt"></i>
+            <% end %>
+           </p>
           <% end %>
-         </p>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-5">
+      <div class="py-3 px-5">
+        <h2>Add ingredient</h2>
+
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+         <%= f.association :ingredient, selected: 1, input_html: { class: "select2" } %>
+        <%= f.input :description %>
+        <%= f.submit 'add ingredient', class: "btn btn-light"%>
         <% end %>
+      </div>
     </div>
 
-    <div class="p-1 text-center">
-      <h2>Add ingredient</h2>
-
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-       <%= f.association :ingredient, selected: 1, input_html: { class: "select2" } %>
-      <%= f.input :description %>
-      <%= f.submit 'add ingredient', class: "btn btn-light"%>
-      <% end %>
-    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 class CocktailsController < ApplicationController
   before_action :find_cocktail, only: %i[show update]
+
   def index
     @query = params[:query]
     @cocktails = if @query
