@@ -44,31 +44,34 @@ array_names.delete('30. Sidecar')
 array_names.delete('5. Manhattan')
 # p array_names[2..49]
 # p array_names[2..49].count
-sidecar = Cocktail.new(
+sidecar = Cocktail.create(
   name: '30. Sidecar',
   description: 'Brandy, tragically underrepresented on this list, earns a well-deserved moment in the worldwide spotlight as the star of one of the world’s most-ordered cocktails. The Sidecar is a good place to start for those not familiar with the category-spanning spirit: the drink mixes brandy, lemon, and triple sec, making a tart, refreshing tipple.'
 )
-sidecar.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/sidecar-inside.jpg'
-sidecar.save
+cocktail_image = sidecar.images.build
+cocktail_image.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/sidecar-inside.jpg'
+cocktail_image.save
 
 array_names[2..49].each_with_index do |name, i|
   image = if array_p[i][:img] == ''
-            'https://images.pexels.com/photos/33400/champagner-toasting-new-year-s-eve-drink.jpg?auto=compress&cs=tinysrgb&dpr=1&w=50'
-          else array_p[i][:img]
-          end
-  cocktail = Cocktail.new(
+    'https://images.pexels.com/photos/33400/champagner-toasting-new-year-s-eve-drink.jpg?auto=compress&cs=tinysrgb&dpr=1&w=50'
+  else array_p[i][:img]
+  end
+  cocktail = Cocktail.create(
     name: name,
     description: array_p[i][:p]
   )
-  cocktail.remote_image_url = image
-  cocktail.save
+  cocktail_image = cocktail.images.build
+  cocktail_image.remote_image_url = image
+  cocktail_image.save
 end
 
-manhattan = Cocktail.new(
+manhattan = Cocktail.create(
   name: '5. Manhattan',
   description: 'It’s hard to stray from the Manhattan, and the recent rise of rye whiskey makes it even more difficult. Spicy rye, sweet vermouth, and two dashes of Angostura, stirred, strained, and garnished with a brandied cherry can make you feel like a true class act.'
 )
-manhattan.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/manhattan-inside.jpg'
-manhattan.save
+cocktail_image = manhattan.images.build
+cocktail_image.remote_image_url = 'https://static.vinepair.com/wp-content/uploads/2017/11/manhattan-inside.jpg'
+cocktail_image.save
 
 puts 'finished seeding cocktails'
