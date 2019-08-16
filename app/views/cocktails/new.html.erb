@@ -1,19 +1,15 @@
 <div class="text-center m-5 text-danger">
-
   <h1><i class="fas fa-plus-circle"></i> Add a New Cocktail</h1>
-
 </div>
-
 <div class="card bg-white p-5">
-
   <%= simple_form_for(@cocktail) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :image %>
-  <%= f.input :image_cache, as: :hidden %>
-  <%= f.submit class: "btn btn-light"%>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.fields_for :image do |ff| %>
+      <%= ff.label :image %><br>
+      <%= ff.file_field :image, multiple:true, name: 'images[]' %>
+    <% end %>
+    <%= f.submit class: "btn btn-light"%>
   <% end %>
-
 </div>
-
 <%= link_to 'back to cocktails', cocktails_path, class:"btn btn-light" %>

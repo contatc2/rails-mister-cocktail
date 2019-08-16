@@ -4,10 +4,10 @@ class CocktailsController < ApplicationController
   def index
     @query = params[:query]
     @cocktails = if @query
-                   Cocktail.where('LOWER(name) like ?', "%#{@query.downcase}%")
-                 else
-                   Cocktail.all
-                 end
+      Cocktail.where('LOWER(name) like ?', "%#{@query.downcase}%")
+    else
+      Cocktail.all
+    end
   end
 
   def saved
@@ -21,11 +21,13 @@ class CocktailsController < ApplicationController
 
   def new
     @cocktail = Cocktail.new
+    @image = @cocktail.images.build
   end
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
+      params[:images]&.each { |image| @cocktail.images.create(image: image) }
       redirect_to cocktail_path(@cocktail)
     else
       render :new
@@ -44,6 +46,6 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :description, :image, :saved)
+    params.require(:cocktail).permit(:name, :description, :saved, images_attributes: [:image, :cocktail_id])
   end
 end

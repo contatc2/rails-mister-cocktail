@@ -1,10 +1,7 @@
 <div class="cards">
-
-<% @cocktails.reverse.each do |cocktail| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.image, height: 300, width: 400, crop: :fill %>')">
-    <%= link_to cocktail.name, cocktail_path(cocktail), class:"text-decoration-none text-light"  %>
-  </div>
-<% end %>
-
+  <% @cocktails.reverse.each do |cocktail| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.images.first.image_url, height: 300, width: 400, crop: :fill %>')">
+      <%= link_to cocktail.name, cocktail_path(cocktail), class:"text-decoration-none text-light"  %>
+    </div>
+  <% end %>
 </div>
-
